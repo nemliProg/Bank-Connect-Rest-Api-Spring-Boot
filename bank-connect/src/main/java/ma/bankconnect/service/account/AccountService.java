@@ -1,4 +1,4 @@
-package ma.bankconnect.service;
+package ma.bankconnect.service.account;
 
 import ma.bankconnect.entities.Account;
 
