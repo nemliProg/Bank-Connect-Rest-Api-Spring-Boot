@@ -11,5 +11,5 @@ import java.util.List;
 public interface TransactionRepository extends JpaRepository<Transaction, Long> {
     List<Transaction> findAllBySenderOrReceiver(Account account);
 
-
+    List<Transaction> findAllBySender(Account sender);
 }
