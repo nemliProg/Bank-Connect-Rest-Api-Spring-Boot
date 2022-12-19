@@ -2,13 +2,35 @@ package ma.bankconnect.service.transaction;
 
 import ma.bankconnect.entities.Account;
 import ma.bankconnect.entities.Transaction;
+import ma.bankconnect.repository.TransactionRepository;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
+@Service
+@Transactional
 public class TransactionServiceImp implements TransactionService{
-    @Override
-    public void transfer(Account sender, Account receiver, double amount) {
 
+    private TransactionRepository transactionRepository;
+
+    public TransactionServiceImp(TransactionRepository transactionRepository) {
+        this.transactionRepository = transactionRepository;
+    }
+
+
+    @Override
+    public Transaction transfer(Account sender, Account receiver, double amount) {
+        sender.setSolde(sender.getSolde() - amount);
+        receiver.setSolde(receiver.getSolde() + amount);
+        Transaction transaction = new Transaction();
+        transaction.setSender(sender);
+        transaction.setReceiver(receiver);
+        transaction.setAmount(amount);
+        transaction.setDate(LocalDateTime.now());
+        transactionRepository.save(transaction);
+        return transaction;
     }
 
     @Override

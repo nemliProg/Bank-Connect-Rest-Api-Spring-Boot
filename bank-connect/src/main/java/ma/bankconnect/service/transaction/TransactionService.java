@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface TransactionService {
 
-    void transfer(Account sender, Account receiver, double amount);
+    Transaction transfer(Account sender, Account receiver, double amount);
     List<Transaction> getAllTransactionsOfAccount(Account account);
     List<Transaction> getAllTransactionsAsSender(Account account);
     List<Transaction> getAllTransactionsAsReceiver(Account account);
