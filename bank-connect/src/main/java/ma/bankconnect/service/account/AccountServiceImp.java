@@ -1,8 +1,11 @@
 package ma.bankconnect.service.account;
 
 import ma.bankconnect.entities.Account;
+import ma.bankconnect.entities.ArchiveAccount;
 import ma.bankconnect.entities.Transaction;
 import ma.bankconnect.repository.AccountRepository;
+import ma.bankconnect.repository.ArchiveAccountRepository;
+import ma.bankconnect.service.archive_account.ArchiveAccountServiceImp;
 import ma.bankconnect.service.transaction.TransactionServiceImp;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,6 +18,7 @@ public class AccountServiceImp implements AccountService{
 
     private AccountRepository accountRepository;
     private TransactionServiceImp transactionServiceImp;
+    private ArchiveAccountServiceImp archiveAccountServiceImp;
 
     public AccountServiceImp(AccountRepository accountRepository, TransactionServiceImp transactionServiceImp) {
         this.accountRepository = accountRepository;
@@ -41,7 +45,13 @@ public class AccountServiceImp implements AccountService{
 
     @Override
     public boolean archiveAccount(Long accountId, String reason) {
-        return false;
+        // archive the account
+        ArchiveAccount archivedAccount = archiveAccountServiceImp.archiveAccount(accountId,reason);
+        // check if the account is archived
+        if (archivedAccount == null){
+            return false;
+        }
+        return true;
     }
 
     @Override
