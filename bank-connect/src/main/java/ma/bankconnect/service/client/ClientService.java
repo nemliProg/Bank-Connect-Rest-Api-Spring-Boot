@@ -10,5 +10,5 @@ public interface ClientService {
     Optional<Client> getClientByEmail(String email);
     Client saveClient(Client client);
     Client updateClient(Client client);
-    Optional<ArchiveClient> archiveClient(Long clientId, String reason) throws ArchiveClientNotFoundException;
+    boolean archiveClient(Long clientId, String reason) throws ArchiveClientNotFoundException;
 }
