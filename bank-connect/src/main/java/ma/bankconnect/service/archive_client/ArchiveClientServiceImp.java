@@ -21,18 +21,18 @@ public class ArchiveClientServiceImp implements ArchiveClientService {
     }
 
     @Override
-    public boolean archiveClient(Long clientId, String reason) {
+    public ArchiveClient archiveClient(Long clientId, String reason) {
         //  check if client is exist
         Client client = clientRepository.findById(clientId).get();
         if (client == null){
-            return false;
+            return null;
         }
         //  archive client
         ArchiveClient archiveClient = new ArchiveClient();
-        archiveClient.setClient(clientRepository.findById(clientId).get());
+        archiveClient.setClient(client);
         archiveClient.setReason(reason);
         archiveClientRepository.save(archiveClient);
-        return true;
+        return archiveClient;
     }
 
     @Override
