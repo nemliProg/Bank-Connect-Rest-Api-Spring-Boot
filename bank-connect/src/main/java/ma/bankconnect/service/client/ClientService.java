@@ -1,8 +1,7 @@
 package ma.bankconnect.service.client;
 
-import ma.bankconnect.entities.ArchiveClient;
 import ma.bankconnect.entities.Client;
-import ma.bankconnect.error.exception.ArchiveClientNotFoundException;
+import ma.bankconnect.error.exception.archive_client.ArchiveClientNotFoundException;
 
 import java.util.Optional;
 

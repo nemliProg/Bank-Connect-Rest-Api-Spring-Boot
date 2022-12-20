@@ -20,9 +20,10 @@ public class AccountServiceImp implements AccountService{
     private TransactionServiceImp transactionServiceImp;
     private ArchiveAccountServiceImp archiveAccountServiceImp;
 
-    public AccountServiceImp(AccountRepository accountRepository, TransactionServiceImp transactionServiceImp) {
+    public AccountServiceImp(AccountRepository accountRepository, TransactionServiceImp transactionServiceImp, ArchiveAccountServiceImp archiveAccountServiceImp) {
         this.accountRepository = accountRepository;
         this.transactionServiceImp = transactionServiceImp;
+        this.archiveAccountServiceImp = archiveAccountServiceImp;
     }
 
     @Override
