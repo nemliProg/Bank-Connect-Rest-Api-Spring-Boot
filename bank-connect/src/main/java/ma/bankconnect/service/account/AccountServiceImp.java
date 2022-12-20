@@ -56,21 +56,21 @@ public class AccountServiceImp implements AccountService{
 
     @Override
     public Account saveAccount(Account account) {
-        return null;
+        return accountRepository.save(account);
     }
 
     @Override
     public Account updateAccount(Account account) {
-        return null;
+        return accountRepository.save(account);
     }
 
     @Override
     public Optional<Account> getAccountByRib(String rib) {
-        return Optional.empty();
+        return accountRepository.findByRib(rib);
     }
 
     @Override
     public Optional<Account> getAccountById(Long id) {
-        return Optional.empty();
+        return accountRepository.findById(id);
     }
 }
