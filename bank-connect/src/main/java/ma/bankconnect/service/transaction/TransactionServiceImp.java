@@ -35,7 +35,7 @@ public class TransactionServiceImp implements TransactionService{
 
     @Override
     public List<Transaction> getAllTransactionsOfAccount(Account account) {
-        return transactionRepository.findAllBySenderOrReceiver(account);
+        return transactionRepository.findAllBySenderOrReceiver(account,account);
     }
 
     @Override
