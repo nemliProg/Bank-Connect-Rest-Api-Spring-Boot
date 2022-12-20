@@ -14,4 +14,5 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long> 
     List<Transaction> findAllBySender(Account sender);
 
     List<Transaction> findAllByReceiver(Account receiver);
+
 }
