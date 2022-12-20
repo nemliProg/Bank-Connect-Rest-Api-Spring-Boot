@@ -38,8 +38,8 @@ public class AccountServiceImp implements AccountService{
             return false;
         }
         // update the sender and receiver accounts and return true
-        accountRepository.save(sender);
-        accountRepository.save(receiver);
+        updateAccount(sender);
+        updateAccount(receiver);
         return true;
     }
 
