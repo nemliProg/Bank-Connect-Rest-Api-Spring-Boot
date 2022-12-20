@@ -1,12 +1,18 @@
 package ma.bankconnect.service.archive_account;
 
 import ma.bankconnect.entities.ArchiveAccount;
+import ma.bankconnect.repository.AccountRepository;
 
 public class ArchiveAccountServiceImp implements ArchiveAccountService {
 
+    private AccountRepository accountRepository;
+
     @Override
-    public boolean archiveAccount(Long accountId, String reason) {
-        return false;
+    public ArchiveAccount archiveAccount(Long accountId, String reason) {
+        ArchiveAccount archiveAccount = new ArchiveAccount();
+        archiveAccount.setAccount(accountRepository.findById(accountId).get());
+        archiveAccount.setReason(reason);
+        return archiveAccount;
     }
 
     @Override
