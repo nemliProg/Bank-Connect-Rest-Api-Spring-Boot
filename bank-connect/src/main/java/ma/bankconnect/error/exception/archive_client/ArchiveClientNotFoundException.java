@@ -1,4 +1,6 @@
-package ma.bankconnect.error.exception;
+package ma.bankconnect.error.exception.archive_client;
+
+import ma.bankconnect.error.exception.NotFoundException;
 
 public class ArchiveClientNotFoundException extends NotFoundException {
     public ArchiveClientNotFoundException() {
