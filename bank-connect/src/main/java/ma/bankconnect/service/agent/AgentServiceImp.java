@@ -1,6 +1,7 @@
 package ma.bankconnect.service.agent;
 
 import ma.bankconnect.entities.Agent;
+import ma.bankconnect.error.exception.agent.AgentNotFoundException;
 import ma.bankconnect.repository.AgentRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,7 +19,9 @@ public class AgentServiceImp implements AgentService {
     }
 
     @Override
-    public Optional<Agent> getAgentByEmail(String email) {
-        return agentRepository.findByEmail(email);
+    public Agent getAgentByEmail(String email) throws AgentNotFoundException {
+        return agentRepository.findByEmail(email).orElseThrow(
+                () -> new AgentNotFoundException("Agent with email " + email + " not found")
+        );
     }
 }
