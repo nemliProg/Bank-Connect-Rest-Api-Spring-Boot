@@ -26,29 +26,20 @@ public class JWTAuthenticationProvider implements AuthenticationProvider {
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
 
-        // In BasicController.login() method, we call authenticationManager.authenticate(token)
-        // Then, Authentication Manager calls AuthenticationProvider's authenticate method.
-        // Since JwtAuthenticationProvider is our custom authentication provider,
-        // this method will be executed.
+
         String email = authentication.getName();
         String password = String.valueOf(authentication.getCredentials());
 
-        // Fetching user as wrapped with UserDetails object
         UserDetails userDetails = userDetailsService.loadUserByUsername(email);
 
-        // If user is not null, then we check if password matches
         if (userDetails != null){
             if (passwordEncoder.matches(password, userDetails.getPassword().trim())) {
-                // if it matches, then we can initialize UsernamePasswordAuthenticationToken.
-                // Attention! We used its 3 parameters constructor.
                    return new UsernamePasswordAuthenticationToken(email, password, userDetails.getAuthorities());
             }
         }
         throw new BadCredentialsException("Error!!");
     }
 
-    // Authentication Manager checks if the token is supported by this filter
-    // to avoid unnecessary checks.
     @Override
     public boolean supports(Class<?> authenticationType) {
         return UsernamePasswordAuthenticationToken.class.equals(authenticationType);
