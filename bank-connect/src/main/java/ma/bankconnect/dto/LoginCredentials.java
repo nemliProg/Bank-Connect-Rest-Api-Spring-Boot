@@ -19,6 +19,4 @@ public class LoginCredentials {
     @NotBlank
     private String password;
 
-    @NotBlank
-    String userType;
 }
