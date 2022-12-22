@@ -2,12 +2,8 @@ package ma.bankconnect.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import ma.bankconnect.entities.superclass.User;
 
 import java.time.LocalDateTime;
@@ -19,6 +15,32 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Client extends User {
+
+    @Builder
+    public Client(
+            String firstName,
+            String lastName,
+            String email,
+            String password,
+            String cin,
+            String photoCinR,
+            String photoCinV,
+            String phoneNumber,
+            String adresse,
+            String codeSms,
+            LocalDateTime timeCodeSms,
+            List<Account> accounts)
+    {
+        super(firstName, lastName, email, password);
+        this.cin = cin;
+        this.photoCinR = photoCinR;
+        this.photoCinV = photoCinV;
+        this.phoneNumber = phoneNumber;
+        this.adresse = adresse;
+        this.codeSms = codeSms;
+        this.timeCodeSms = timeCodeSms;
+        this.accounts = accounts;
+    }
 
     String cin;
 
