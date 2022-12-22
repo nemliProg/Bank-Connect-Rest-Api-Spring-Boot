@@ -13,9 +13,9 @@ import java.util.Optional;
 @Service
 @Transactional
 public class ClientServiceImp implements ClientService {
-    private ClientRepository clientRepository;
+    private final ClientRepository clientRepository;
 
-    private ArchiveClientServiceImp archiveClientServiceImp;
+    private final ArchiveClientServiceImp  archiveClientServiceImp;
 
     ClientServiceImp(ClientRepository clientRepository, ArchiveClientServiceImp archiveClientServiceImp) {
         this.clientRepository = clientRepository;
@@ -48,5 +48,21 @@ public class ClientServiceImp implements ClientService {
         ArchiveClient archiveClient = archiveClientServiceImp.archiveClient(clientId, reason);
         return archiveClient != null;
     }
+
+    @Override
+    public boolean checkIfClientExistByEmail(String email){
+        return clientRepository.existsByEmail(email);
+    }
+
+    @Override
+    public boolean checkIfClientExistByCin(String cin){
+        return clientRepository.existsByCin(cin);
+    }
+
+    @Override
+    public boolean checkIfClientExistByPhoneNumber(String phoneNumber){
+        return clientRepository.existsByPhoneNumber(phoneNumber);
+    }
+
 
 }
