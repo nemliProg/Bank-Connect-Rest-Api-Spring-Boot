@@ -10,4 +10,9 @@ public interface ClientService {
     Client saveClient(Client client);
     Client updateClient(Client client);
     boolean archiveClient(Long clientId, String reason) throws ArchiveClientNotFoundException;
+
+    boolean checkIfClientExistByEmail(String email);
+    boolean checkIfClientExistByCin(String cin);
+    boolean checkIfClientExistByPhoneNumber(String phoneNumber);
+
 }

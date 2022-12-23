@@ -6,20 +6,29 @@ import lombok.*;
 @MappedSuperclass
 @Getter
 @Setter
+@NoArgsConstructor
 public class User {
 
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY )
-    Long id;
+    protected Long id;
 
     @Column( name = "first_name" )
-    String firstName;
+    protected String firstName;
 
     @Column( name = "last_name" )
-    String lastName;
+    protected String lastName;
 
-    String email;
+    protected String email;
 
-    String password;
+    protected String password;
+
+    public User(String firstName, String lastName, String email, String password) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+    }
+
 
 }
