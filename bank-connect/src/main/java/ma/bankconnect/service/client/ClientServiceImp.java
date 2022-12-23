@@ -26,6 +26,9 @@ public class ClientServiceImp implements ClientService {
     public Optional<Client> getClientByEmail(String email) {
         return clientRepository.findByEmail(email);
     }
+    public Optional<Client> getClientByPhoneNumber(String phoneNumber) {
+        return clientRepository.findByPhoneNumber(phoneNumber);
+    }
 
     @Override
     public Client saveClient(Client client) {

@@ -7,6 +7,7 @@ import java.util.Optional;
 
 public interface ClientService {
     Optional<Client> getClientByEmail(String email);
+    Optional<Client> getClientByPhoneNumber(String phoneNumber);
     Client saveClient(Client client);
     Client updateClient(Client client);
     boolean archiveClient(Long clientId, String reason) throws ArchiveClientNotFoundException;

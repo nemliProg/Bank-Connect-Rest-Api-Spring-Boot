@@ -33,7 +33,7 @@ public class ClientDto {
     @NotBlank
     private String password;
 
-    @Size(min = 10, max = 10)
+    @Size(min = 13, max = 13)
     private String phoneNumber;
 
     @NotBlank
