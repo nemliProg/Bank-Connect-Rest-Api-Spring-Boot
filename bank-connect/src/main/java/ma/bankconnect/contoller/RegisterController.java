@@ -6,7 +6,6 @@ import lombok.RequiredArgsConstructor;
 import ma.bankconnect.dto.ClientDto;
 import ma.bankconnect.dto.ClientVerify;
 import ma.bankconnect.dto.ErrorMessage;
-import ma.bankconnect.dto.LoginSuccess;
 import ma.bankconnect.entities.Client;
 import ma.bankconnect.error.exception.client.ClientNotFoundException;
 import ma.bankconnect.error.exception.client.ClientRegisterFailedException;
@@ -26,7 +25,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
-import java.time.temporal.TemporalUnit;
 import java.util.HashMap;
 
 @RestController
@@ -135,6 +133,11 @@ public class RegisterController {
             code = "0" + code;
         }
         return code;
+    }
+
+    @GetMapping("/encrypt")
+    public String encrypt() {
+        return passwordEncoder.encode("password");
     }
 
 }

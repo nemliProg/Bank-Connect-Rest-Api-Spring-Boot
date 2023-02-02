@@ -1,11 +1,10 @@
 package ma.bankconnect.service.account;
 
+import ma.bankconnect.service.archive_account.ArchiveAccountServiceImp;
 import ma.bankconnect.entities.Account;
 import ma.bankconnect.entities.ArchiveAccount;
 import ma.bankconnect.entities.Transaction;
 import ma.bankconnect.repository.AccountRepository;
-import ma.bankconnect.repository.ArchiveAccountRepository;
-import ma.bankconnect.service.archive_account.ArchiveAccountServiceImp;
 import ma.bankconnect.service.transaction.TransactionServiceImp;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
